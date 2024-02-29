@@ -25,10 +25,7 @@ const handler = NextAuth({
 
 
       },
-
-
-      
-     
+          
 
       
       async authorize(credentials) {

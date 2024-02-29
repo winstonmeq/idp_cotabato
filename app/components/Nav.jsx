@@ -35,7 +35,7 @@ useEffect(() =>{
 
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
+    <nav className="flex-between w-full mb-2 pt-2">
         <Link href={'/'} className="flex gap-2 flex-center">
             <Image src='/images/cotabato.png' 
             width={75}
@@ -59,7 +59,7 @@ useEffect(() =>{
               {session?.user ? (
                 <div className="flex gap-3 md:gap-6">
                     
-                   <Link href={'/task'} className="black_btn">Task</Link>
+                   <Link href={'/desktop'} className="black_btn">Home</Link>
 
                    <Link href={'/generate'} className="black_btn">Benificiary</Link>
 
