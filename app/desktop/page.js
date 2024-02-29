@@ -25,28 +25,33 @@ const DesktopPage = () => {
 
   return (
     <div className="flex flex-wrap">
-      {/* Navigation Bar */}
-      <nav className="w-full bg-blue-600 p-2">
-        <div className="flex items-center justify-between">
+      <nav className="bg-black p-2">
+        <div className="flex flex-col">
           <button onClick={toggleMenu} className="text-white">
             ☰
           </button>
-          <div className="text-white">Welcome! {session?.user?.email}</div>
-        </div>
-      </nav>
 
-      {/* Sidebar */}
-      <div className={`w-64 relative bg-blue-600 ${showMenu ? 'hidden md:block' : ''}`}>
+          
+      <div className={`${showMenu ? 'hidden lg:block' : ''}`}>
         <div className='flex flex-col p-4 items-left'>
-           <button className="text-gray-300 font-semibold mb-2 focus:outline-none hover:bg-blue-700 focus:bg-orange-400 rounded py-2" >Home</button>
-            <button className="text-gray-300 font-semibold mb-2 focus:outline-none hover:bg-blue-700 focus:bg-orange-400 rounded py-2" >Dashboard</button>
-            <button className="text-gray-300 font-semibold mb-2 focus:outline-none hover:bg-blue-700 focus:bg-orange-400 rounded py-2" >Evacuation</button>
-            <button className='text-gray-300 font-semibold mb-2 focus:outline-none hover:bg-blue-700 focus:bg-orange-400 rounded py-2' >Settings</button>
+           <button className="text-gray-300 font-semibold focus:outline-none hover:bg-gray-700 focus:bg-gray-600 rounded p-2" >Home</button>
+            <button className="text-gray-300 font-semibold focus:outline-none hover:bg-gray-700 focus:bg-gray-600 rounded p-2" >Dashboard</button>
+            <button className="text-gray-300 font-semibold focus:outline-none hover:bg-gray-700 focus:bg-gray-600 rounded p-2" >Evacuation</button>
+            <button className='text-gray-300 font-semibold focus:outline-none hover:bg-gray-700 focus:bg-gray-600 rounded p-2' >Departments</button>
+            <button className='text-gray-300 font-semibold focus:outline-none hover:bg-gray-700 focus:bg-gray-600 rounded p-2' >Distribution</button>
+            <button className='text-gray-300 font-semibold focus:outline-none hover:bg-gray-700 focus:bg-gray-600 rounded p-2' >Benificiaries</button>
+
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="w-full md:flex-1 bg-gray-100 p-4">
+        </div>
+      </nav>
+
+     
+      
+      <div className="lg:flex-1 sm:flex-1 bg-gray-100 h-screen ">
+      <div className='px-4 py-2 bg-gray-300' >Welcome! {session?.user?.email}</div>
+
        <QRCodeTable />
       </div>
     </div>

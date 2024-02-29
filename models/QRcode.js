@@ -1,7 +1,7 @@
 
+import mongoose from "mongoose";
 
 import {Schema, model, models} from 'mongoose'
-import mongoose from "mongoose";
 
 
 const QRcodeSchema = new Schema ({
@@ -11,6 +11,10 @@ const QRcodeSchema = new Schema ({
         ref: 'User', // Reference to the Distribution model
     },
 
+
+    disasterIncident: {
+        type: String,
+    },
   
     region: {
         type: String,

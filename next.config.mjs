@@ -3,8 +3,8 @@ const nextConfig = {
 
     env: {
              
-        LOCAL_URL: 'http://localhost:3000',        
-        //LOCAL_URL: 'https://www.alistoplus.com',
+        //LOCAL_URL: 'http://localhost:3000',        
+        LOCAL_URL: 'https://idpcotabato.vercel.com',
 
         
      },

@@ -80,7 +80,7 @@ const QRCodeTable = () => {
         {
             name: "QRCode Number",
             selector: (row) => (
-                <div className="justify-center text-sm">{row.qrnumber}</div>
+                <div className="justify-center text-sm">{row.qrNumber}</div>
             ),
 
         },
@@ -154,15 +154,28 @@ const QRCodeTable = () => {
 
     return (
 
-        <div className="w-full h-screen">
+        <div>
 
-            <div className="bg-black flex ">
-                <h2 className="flex-1 text-lg text-white p-2 font-semibold">QR Code Generated</h2>
-
+            <div className="flex flex-row w-full justify-end p-2">
+                <div className="w-full text-right pr-4 items-center">
+                    <input
+                    type="text"
+                    value={''}
+                    placeholder=" search"
+                    className="rounded"
+                    />
+                </div>
+                <div className="w-1/4 ">
+                    <button
+                    className="flex text-sm text-red-100 px-3 py-1 rounded-full bg-black hover:bg-gray-700 focus:text-red"
+                    >
+                        Search
+                    </button>
+                </div>
             </div>
 
 
-            <div className="flex-col border-2 border-black">                
+            <div>                
 
                 <DataTable
                     columns={columns}

@@ -57,19 +57,21 @@ useEffect(() =>{
 
         <div className="sm:flex hidden relative">
               {session?.user ? (
-                <div className="flex gap-3 md:gap-6">
+                <div className="flex gap-2 md:gap-2">
                     
                    <Link href={'/desktop'} className="black_btn">Home</Link>
 
-                   <Link href={'/generate'} className="black_btn">Benificiary</Link>
+                   <Link href={'/qrcodegenerator'} className="black_btn">QR Code</Link>
 
-                   <Link href={'/distribution'} className="black_btn">Distribution</Link>
 
-                   <Link href={'/store'} className="black_btn">Stores</Link>
+                   <Link href={'/benificiaries'} className="black_btn">Accounts</Link>
 
-                    <Link href={'/voters'} className="black_btn">Member</Link>
+                   <Link href={'/distribution'} className="black_btn">Reports</Link>
 
-                    <Link href={'/qrcodegenerator'} className="black_btn">Generate QR Code</Link>
+                   <Link href={'/department'} className="black_btn">Downloads</Link>
+
+                    <Link href={'/settings'} className="black_btn">Settings</Link>
+
 
                     <button type="button" onClick={signOut} className="outline_btn">
                         Sign Out
@@ -85,7 +87,7 @@ useEffect(() =>{
 
                         // </button>
                     
-                        <div key={provider}> 
+                        <div key={provider} className="black_btn"> 
                                 <Link href="/api/auth/signin">Login</Link>
                      
                         </div>

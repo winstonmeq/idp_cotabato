@@ -9,6 +9,9 @@ import axios from "axios";
 
 const GenerateQRCode = () => {
 
+
+  const [disasterIncident, setDisasterIncident] = useState('');
+
   const [region, setRegion] = useState("");
   const [province, setProvince] = useState("");
   const [municipality, setMunicipality] = useState("");
@@ -18,16 +21,10 @@ const GenerateQRCode = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-
-  //  generateRandomNumber()
-
-  }, []);
 
 
   const generateRandomNumber = () => {
     const newRandomNumber = Math.floor(Math.random() * 182000) + 1; // Generates a random number between 1 and 182000
-    setQrNumber(newRandomNumber);
     return newRandomNumber; // Return the generated number for chaining in the loop
   };
 
@@ -35,24 +32,28 @@ const GenerateQRCode = () => {
 
     for (let i = 0; i < 5; i++) {
         
-      const newQrNumber = generateRandomNumber(); // Generate a random number in each iteration
+     const newNum = generateRandomNumber(); // Generate a random number in each iteration
      
-     addQRcode(); // Pass payload to addQRcode function and wait for it to finish
+     addQRcode(newNum); // Pass payload to addQRcode function and wait for it to finish
       
       
     }
   };
  
   
-  const addQRcode = async () => {
+  const addQRcode = async (newNum) => {
+
+    
+
     try {
 
         const payload = {
+             disasterIncident,
             region,
             province,
             municipality,
             barangay,
-            qrNumber // Use the newly generated number
+            qrNumber:newNum // Use the newly generated number
           };
 
       const response = await axios.post('/api/qrnumber', payload);
@@ -72,12 +73,33 @@ const GenerateQRCode = () => {
   return (
     
       <div className="flex flex-row justify-center">
-      <div className="w-full">
+      <div className="w-1/2">
         <h3 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
         Generate QR Code
         </h3>
         <form className="mt-8 space-y-6" onSubmit={generateQR}>
          
+        <div>
+             <label className="block mb-2 text-sm font-medium text-gray-500 dark:text-white">
+                Incident
+              </label>
+             
+            <select 
+             required
+             value={disasterIncident}
+             onChange={(e) => setDisasterIncident(e.target.value)}
+            className="mt-1 block w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+              <option value="">Select</option> 
+              <option value="Landslide">Landslide</option>
+              <option value="Flood">Flood</option>
+              <option value="Fire">Fire</option>
+
+
+            </select>
+       
+            </div>
+
+
             <div>
              <label className="block mb-2 text-sm font-medium text-gray-500 dark:text-white">
                 Region
@@ -87,7 +109,7 @@ const GenerateQRCode = () => {
              required
              value={region}
              onChange={(e) => setRegion(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+            className="mt-1 block w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
               <option value="">Select</option> 
               <option value="XII">XII</option>
             </select>
@@ -103,7 +125,7 @@ const GenerateQRCode = () => {
              required
              value={province}
              onChange={(e) => setProvince(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+            className="mt-1 block w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
             <option value="">Select</option>    
               <option value="Cotabato">Cotabato</option>
             </select>
@@ -119,7 +141,7 @@ const GenerateQRCode = () => {
              required
              value={municipality}
              onChange={(e) => setMunicipality(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+            className="mt-1 block w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
             <option value="">Select</option>
             <option value="Kidapawan City">Kidapawan City</option>
             <option value="Matalam">Matalam</option>
@@ -138,7 +160,7 @@ const GenerateQRCode = () => {
              required
              value={barangay}
              onChange={(e) => setBarangay(e.target.value)}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
+            className="mt-1 block w-full border-gray-300 p-2 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-300">
             <option value="">Select</option>
             <option value="Amas">Amas</option>
             <option value="Poblacion">Poblacion</option>
