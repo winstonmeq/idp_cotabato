@@ -4,7 +4,7 @@ const nextConfig = {
     env: {
              
         //LOCAL_URL: 'http://localhost:3000',        
-        LOCAL_URL: 'https://idpcotabato.vercel.com',
+        LOCAL_URL: 'https://idpcotabato.vercel.app',
 
         
      },
