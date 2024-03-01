@@ -3,19 +3,12 @@
 'use client'
 import { useState } from 'react';
 import axios from 'axios';
-import { useSession } from 'next-auth/react'
-import { redirect } from 'next/navigation'
+import { useRouter } from "next/navigation";
+
 
 const RegistrationForm = () => {
 
-
-//   const { data: session } = useSession({
-//     required: true,
-//     onUnauthenticated() {
-//         redirect('/api/auth/signin?callbackUrl=/client')
-//     }
-// })
-
+  const router = useRouter();
 
 
   const [userData, setUserData] = useState({
@@ -43,8 +36,9 @@ const RegistrationForm = () => {
       if (response.status === 200) {
 
         alert(response.data);
+    
+        router.push('/')
 
-        
         
       } else {
         // Handle unexpected response status codes
@@ -63,7 +57,7 @@ const RegistrationForm = () => {
 
   return (
     <div className="max-w-md mx-auto mt-8 p-8 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-semibold mb-4">Login Registration</h2>
+      <h2 className="text-2xl font-semibold mb-4">User's Registration</h2>
       <form onSubmit={handleSubmit}>
           
 

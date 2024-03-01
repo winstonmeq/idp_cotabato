@@ -16,7 +16,7 @@ import axios from "axios";
 const QRCodeTable = () => {
 
     const [qrcodeData, setQrcodeData] = useState([]);
-
+    const [searchName, setSearchName] = useState([])
 
     const router = useRouter();
 
@@ -67,9 +67,9 @@ const QRCodeTable = () => {
             selector: (row) => (
                 <div className="justify-center text-sm">{row.rowNum}</div>
             ),
-            maxWidth: "25px",
+            // maxWidth: "25px",
             wrap: true,
-            width: "6rem"
+            width: "4rem"
             // cell: (d) => (
             //   <div>
             //     {d.rowNum}
@@ -163,6 +163,7 @@ const QRCodeTable = () => {
                     value={''}
                     placeholder=" search"
                     className="rounded"
+                    onChange={(e) =>setSearchName()}
                     />
                 </div>
                 <div className="w-1/4 ">
