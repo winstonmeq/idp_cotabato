@@ -89,8 +89,8 @@ useEffect(() =>{
 
                         // </button>
                     
-                        <div  className="black_btn"> 
-                                <Link  key={provider.id} href="/api/auth/signin">Login</Link>
+                        <div key={provider.id}  className="black_btn"> 
+                                <Link href="/api/auth/signin">Login</Link>
                      
                         </div>
 
