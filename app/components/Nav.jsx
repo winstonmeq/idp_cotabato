@@ -27,6 +27,8 @@ useEffect(() =>{
 
         setProviders(response)
 
+        console.log(response)
+
     }
 
     setUpProviders();

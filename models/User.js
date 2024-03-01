@@ -1,5 +1,6 @@
 
 
+
 import {Schema, model, models} from 'mongoose'
 
 
@@ -24,10 +25,6 @@ const UserSchema = new Schema ({
     admin: {
         type: Boolean,
     },
-
-    image: {
-        type: String
-    }
 
 
 });
