@@ -7,13 +7,15 @@ import { useState, useEffect } from "react"
 import DataTable from "react-data-table-component";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import DafacRegistration from "../dafac/dafacRegistration";
+import DafacPage from "../dafac/page";
 
 
 
 
 
 
-const QRCodeTable = () => {
+const QRCodeTable = ({dafacModalOpen}) => {
 
     const [qrcodeData, setQrcodeData] = useState([]);
     const [searchName, setSearchName] = useState([])
@@ -127,12 +129,7 @@ const QRCodeTable = () => {
             selector: (row) =>                
 
                     <div className="p-2">
-                    <button
-                        
-                        className="flex text-sm text-red-100 px-3 py-1 rounded-full bg-red-500 hover:bg-red-800 focus:shadow-outline-red"
-                    >
-                        Add
-                    </button>
+                     <DafacPage incidentData={row} />
                     </div>
                  
             

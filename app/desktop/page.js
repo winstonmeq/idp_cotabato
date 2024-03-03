@@ -4,24 +4,43 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import QRCodeTable from './qrcodeList'
+import DafacRegistration from '../dafac/dafacRegistration'
 
 
 
 const DesktopPage = () => {
+  
   const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect('/api/auth/signin?callbackUrl=/client')
-    }
+    //required: true,
+    // onUnauthenticated() {
+    //   redirect('/api/auth/signin?callbackUrl=/client')
+    // }
   });
 
   console.log('Session:', session?.user?.email);
 
   const [showMenu, setShowMenu] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
+
+
+const dafacModalOpen = () =>{
+
+setIsModalOpen(true)
+
+}
+
+const dafacModalClose = () =>{
+
+  setIsModalOpen(false)
+  
+  }
+
+
 
   return (
     <div className="flex flex-wrap">
@@ -52,7 +71,8 @@ const DesktopPage = () => {
       <div className="lg:flex-1 sm:flex-1 bg-gray-100 h-screen ">
       <div className='px-4 py-2 bg-gray-300' >Welcome! {session?.user?.email}</div>
 
-       <QRCodeTable />
+       <QRCodeTable dafacModalOpen={dafacModalOpen} />
+
       </div>
     </div>
   );

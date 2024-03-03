@@ -70,7 +70,7 @@ const handler = NextAuth({
   },
 
 
-  callbacks: {
+ // callbacks: {
 //     async session({ session }) {
 //       try {
 //         const sessionUser = await User.findOne({ email: session.user.email });
@@ -106,7 +106,7 @@ const handler = NextAuth({
 //         throw error;
 //       }
 //     },
-   },
+ //  },
 });
 
 export { handler as GET, handler as POST };
