@@ -107,6 +107,9 @@ const handler = NextAuth({
 //       }
 //     },
   },
+  
+
+  secret: 'v7COYqKpEdnCbd5aISAw9BxjupOLKYCgBVZ2kwusMNs='
 
   
 });
