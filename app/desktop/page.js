@@ -4,7 +4,6 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import QRCodeTable from './qrcodeList'
-import DafacRegistration from '../dafac/dafacRegistration'
 
 
 
