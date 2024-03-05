@@ -10,10 +10,10 @@ import QRCodeTable from './qrcodeList'
 const DesktopPage = () => {
   
   const { data: session } = useSession({
-    //required: true,
-    // onUnauthenticated() {
-    //   redirect('/api/auth/signin?callbackUrl=/client')
-    // }
+    required: true,
+    onUnauthenticated() {
+      redirect('/api/auth/signin?callbackUrl=/client')
+    }
   });
 
   console.log('Session:', session?.user?.email);
