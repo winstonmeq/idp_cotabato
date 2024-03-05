@@ -70,20 +70,20 @@ const handler = NextAuth({
   },
 
 
- // callbacks: {
-//     async session({ session }) {
-//       try {
-//         const sessionUser = await User.findOne({ email: session.user.email });
-//         if (sessionUser) {
-//           session.user.id = sessionUser._id.toString();
-//           session.user.isAdmin = sessionUser.admin;
-//         }
-//         return session;
-//       } catch (error) {
-//         console.error('Error in session callback:', error);
-//         throw error;
-//       }
-//     },
+ callbacks: {
+    async session({ session }) {
+      try {
+        const sessionUser = await User.findOne({ email: session.user.email });
+        if (sessionUser) {
+          session.user.id = sessionUser._id.toString();
+          session.user.isAdmin = sessionUser.admin;
+        }
+        return session;
+      } catch (error) {
+        console.error('Error in session callback:', error);
+        throw error;
+      }
+    },
 
 //     async signIn({ profile }) {
 //       try {
@@ -106,7 +106,8 @@ const handler = NextAuth({
 //         throw error;
 //       }
 //     },
- //  },
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 });
 
 export { handler as GET, handler as POST };
