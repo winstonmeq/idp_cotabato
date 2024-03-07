@@ -17,6 +17,13 @@ const [providers, setProviders] = useState(null)
 const [toggleDropdown, setToggleDropdown] = useState(false)
 
 
+const [showDropdown, setShowDropdown] = useState(false);
+
+const handleDropdownToggle = () => {
+  setShowDropdown(!showDropdown);
+};
+
+
 
 
 useEffect(() =>{
@@ -70,6 +77,7 @@ useEffect(() =>{
 
                    <Link href={'/distribution'} className="black_btn">Reports</Link>
 
+                   
                    <Link href={'/department'} className="black_btn">Downloads</Link>
 
                     <Link href={'/settings'} className="black_btn">Settings</Link>

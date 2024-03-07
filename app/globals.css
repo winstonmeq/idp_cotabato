@@ -200,3 +200,29 @@ body {
 }
 
 
+@media print {
+  .page-break {
+    margin-top: 1rem;
+    display: block;
+    page-break-before: auto;
+  }
+
+  html, body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+@page {
+  size: A4;
+}
+
+
+
+@media all {
+  .page-break {
+    display: none;
+  }
+}
+

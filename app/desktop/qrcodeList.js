@@ -168,6 +168,16 @@ const QRCodeTable = ({dafacModalOpen}) => {
                         Search
                     </button>
                 </div>
+
+                <div className="w-1/4 ">
+                    <Link href={'/qrPrint'}>
+                    <button
+                    className="flex text-sm text-red-100 px-3 py-1 rounded-full bg-black hover:bg-gray-700 focus:text-red"
+                    >
+                        Print QR
+                    </button>
+                    </Link>
+                </div>
             </div>
 
 

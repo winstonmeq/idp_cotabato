@@ -34,7 +34,7 @@ const QRcodeSchema = new Schema ({
 
 
     qrNumber: {
-        type: Number,
+        type: String,
     },  
 
 

@@ -23,9 +23,11 @@ const GenerateQRCode = () => {
 
 
   const generateRandomNumber = () => {
-    const newRandomNumber = Math.floor(Math.random() * 182000) + 1; // Generates a random number between 1 and 182000
+    const newRandomNumber = Math.floor(Math.random() * 18200) + 1; // Generates a random number between 1 and 182000
     return newRandomNumber; // Return the generated number for chaining in the loop
   };
+
+
 
 const handleGenerate = (e) => {
 
@@ -40,7 +42,7 @@ const handleGenerate = (e) => {
         
      const newNum = generateRandomNumber(); // Generate a random number in each iteration
      
-     addQRcode(e, newNum); // Pass payload to addQRcode function and wait for it to finish
+     addQRcode(e, disasterIncident+newNum); // Pass payload to addQRcode function and wait for it to finish
       
       
     }
