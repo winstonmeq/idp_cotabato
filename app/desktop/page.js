@@ -67,7 +67,7 @@ const dafacModalClose = () =>{
 
      
       
-      <div className="lg:flex-1 sm:flex-1 bg-gray-100 h-screen ">
+      <div className="lg:flex-1 sm:flex-1 bg-gray-100">
       <div className='px-4 py-2 bg-gray-300' >Welcome! {session?.user?.email}</div>
 
        <QRCodeTable dafacModalOpen={dafacModalOpen} />

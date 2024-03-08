@@ -4,7 +4,7 @@
 'use client'
 import Link from "next/link"
 import Image from 'next/image';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { signIn, signOut, useSession, getProviders} from 'next-auth/react';
 
 
@@ -19,8 +19,12 @@ const [toggleDropdown, setToggleDropdown] = useState(false)
 
 const [showDropdown, setShowDropdown] = useState(false);
 
-const handleDropdownToggle = () => {
-  setShowDropdown(!showDropdown);
+const dropdownRef = useRef(null);
+
+const [isOpen, setIsOpen] = useState(false);
+
+const toggleDropdown1 = () => {
+  setIsOpen(!isOpen);
 };
 
 
@@ -41,6 +45,31 @@ useEffect(() =>{
     setUpProviders();
 
 },[])
+
+
+
+const closeDropdownOnOutsideClick = (event) => {
+  if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    setIsOpen(false);
+  }
+};
+
+
+useEffect(() => {
+  document.addEventListener('click', closeDropdownOnOutsideClick);
+
+  return () => {
+    document.removeEventListener('click', closeDropdownOnOutsideClick);
+  };
+}, []);
+
+
+
+
+
+
+
+
 
 
   return (
@@ -68,19 +97,58 @@ useEffect(() =>{
               {session?.user ? (
                 <div className="flex gap-2 md:gap-2">
                     
-                   <Link href={'/desktop'} className="black_btn">Home</Link>
+                   <Link href={'/desktop'} className="bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none">Home</Link>
 
-                   <Link href={'/qrcodegenerator'} className="black_btn">QR Code</Link>
+                   <Link href={'/qrcodegenerator'} className="bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none">QR Code</Link>
 
 
-                   <Link href={'/benificiaries'} className="black_btn">Accounts</Link>
+                   <Link href={'/benificiaries'} className="bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none">Accounts</Link>
 
-                   <Link href={'/distribution'} className="black_btn">Reports</Link>
+
+  <div className="relative inline-block text-left z-50" ref={dropdownRef}>
+      <button
+        type="button"
+        className="bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none"
+        onClick={toggleDropdown1}
+      >
+        Reports
+      </button>
+
+      {isOpen && (
+        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+          {/* Dropdown content */}
+          <div className="py-1">
+            <Link
+              href="/qrPrint"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              QR Code Print
+            </Link>
+            <Link
+              href="#"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Evacuation Center
+            </Link>
+           
+          </div>
+        </div>
+      )}
+    </div>
+
+
+
+
+
+
+
+
+
 
                    
-                   <Link href={'/department'} className="black_btn">Downloads</Link>
+                   <Link href={'/download'} className="bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none">Downloads</Link>
 
-                    <Link href={'/settings'} className="black_btn">Settings</Link>
+                    <Link href={'/settings'} className="bg-gray-800 text-white px-4 py-2 rounded-md focus:outline-none">Settings</Link>
 
 
                     <button type="button" onClick={signOut} className="outline_btn">
