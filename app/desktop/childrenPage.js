@@ -22,8 +22,8 @@ return (
     
 
 <div className="flex flex-col">
-
-  <DafacList />
+{formData.lastName}
+  {/* <DafacList lastName={formData.lastName} firstName={formData.firstName}/> */}
 
   <div className="flex flex-row justify-between">
   <button type="button" onClick={onPrev}>

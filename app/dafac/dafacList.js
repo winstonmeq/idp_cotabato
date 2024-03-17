@@ -10,7 +10,7 @@ import ChildrenRegistration from '../dafac/childrenRegistration'
 
 
 
-const DafacList = () => {
+const DafacList = ({lastName,firstName}) => {
 
     const [childrenData, setChildrenData] = useState([]);
     const [showChildRegistration, setShowChildRegistration] = useState(false)
@@ -29,7 +29,7 @@ const DafacList = () => {
         setShowChildList(true)
 
         setShowChildRegistration(false)
-        fetchChildren()
+        //fetchChildren()
 
     }
 
@@ -37,36 +37,39 @@ const DafacList = () => {
 
 
     useEffect(() => {
-          
-        fetchChildren()  
-       
-      }, []);
+
+
+       // fetchChildren(lastName, firstName)
+        console.log('check lastname',lastName, firstName)
+
+    }, [lastName, firstName]);
 
 
 
 
-      const fetchChildren = async () => {  
-        
-        try {    
-    
-  
-          const {data} = await axios.get('/api/children');
-    
-          console.log('Fetched data:', data);
-    
-          if(data.length >= 0 ){
-  
-              setChildrenData(data)
-  
-          } 
-  
-    
+    const fetchChildren = async (lName, fName) => {
+
+        try {
+
+            const payload = {lastName:lName, firstName:fName}
+
+            const { data } = await axios.post('/api/children/code', payload);
+
+            console.log('Fetched data:', data);
+
+            if (data.length >= 0) {
+
+                setChildrenData(data)
+
+            }
+
+
         } catch (error) {
-    
-          alert(error)
-    
+
+            alert(error)
+
         }
-      };
+    };
 
 
 
@@ -123,27 +126,27 @@ const DafacList = () => {
             name: "Education Level",
             selector: (row) => row.education,
 
-            
+
         },
 
         {
             name: "Skills",
             selector: (row) => row.skills,
 
-            
+
         },
 
-     
+
 
         {
             name: "Action",
-            selector: (row) =>                
+            selector: (row) =>
 
-                    <div className="p-2">
+                <div className="p-2">
 
-                    </div>
-                 
-            
+                </div>
+
+
         },
     ];
 
@@ -155,7 +158,7 @@ const DafacList = () => {
     //     damageCost: totalDamageCost,
     //     // Add other properties as needed based on your columns
     //   };
-      
+
     //   const dataWithTotal = [...buildingData, totalRow];
 
 
@@ -163,14 +166,23 @@ const DafacList = () => {
     return (
 
         <div>
-                <button onClick={handleShowChildRegistration}>Add Child</button>
+
+            <div className="flex flex-row justify-end">
+            <button
+                className="flex text-sm text-red-100 px-3 py-1 rounded-full bg-black hover:bg-gray-700 focus:text-red"
+                onClick={handleShowChildRegistration}>
+                Add Child
+
+            </button>
+            </div>
+          
 
 
-                {showChildList &&   <div>                
+            <div>
 
-             
-                
-                <DataTable
+
+
+                {showChildList && <DataTable
                     columns={columns}
                     data={childrenData}
                     striped
@@ -178,22 +190,23 @@ const DafacList = () => {
                     defaultSortFieldId="createdAt"
                     pagination={true}
                     paginationPerpage={10}
-                    
+
                 />
-               
-           
+                }
+
+                {showChildRegistration &&
+
+                    <ChildrenRegistration onClose={handleShowChildList} />
+
+                }
 
 
-            </div>  }
 
-   
-            {showChildRegistration &&  
+            </div>
 
-                  <ChildrenRegistration onClose={handleShowChildList} />
 
-             }
-            
-            
+
+
         </div>
     )
 }

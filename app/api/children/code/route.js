@@ -3,7 +3,7 @@
 
 
 
-import Parent from "@/models/Parent";
+import Children from "@/models/Children";
 import { connectToDB } from "@/utils/database";
 import { NextResponse } from "next/server";
 
@@ -21,7 +21,7 @@ export async function POST(request) {
 
     await connectToDB();
 
-    const getdata = await Parent.find({lastName:lastName, firstName:firstName}).sort({ createdAt: -1 }).exec();
+    const getdata = await Children.find({lastName:lastName, firstName:firstName}).sort({ createdAt: -1 }).exec();
 
     const dataWithRowIndex = getdata.map((item, index) => ({
       rowNum: index + 1, // Add 1 to start indexing from 1

@@ -57,8 +57,7 @@ const Wizard = ({incidentData}) => {
         },
         step2: {
           // Step 2 form fields
-          children1: '',
-          age1: '',
+        
         },
         // Additional data for Step 3 if needed
 
@@ -108,7 +107,8 @@ const Wizard = ({incidentData}) => {
 
 <div>
       <NavigationPage currentStep={currentStep} totalSteps={totalSteps} onNext={onNext} onPrev={onPrev} />
-      {currentStep === 1 && <RegistrationPage incidentData={incidentData} closeModal={closeModal} data={formData.step1}  onNext={(data) => onNext(2, data)} />}
+
+      {currentStep === 1 && <RegistrationPage incidentData={incidentData} closeModal={closeModal}  onNext={(data) => onNext(2, data)} />}
       {currentStep === 2 && (
         <ChildrenPage data={formData.step2} onNext={(data) => onNext(3, data)} onPrev={() => onPrev(1)} />
       )}

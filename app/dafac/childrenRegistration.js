@@ -194,7 +194,11 @@ const ChildrenRegistration = ({onClose}) => {
             </button>
           </div>
 
-          <div className='flex-col w-full ' >
+    
+          
+        </div>
+      </form>
+      <div className='flex-col w-full ' >
             <button
               type="submit"
               onClick={onClose}
@@ -203,10 +207,6 @@ const ChildrenRegistration = ({onClose}) => {
               Close
             </button>
           </div>
-          
-        </div>
-      </form>
-
     </div>
   </div>
       );

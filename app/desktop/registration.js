@@ -2,25 +2,36 @@
 'use client'
 import { useState } from "react";
 
-const RegistrationPage = ({incidentData, closeModal, data, onNext}) => {
+const RegistrationPage = ({incidentData, closeModal, onNext}) => {
 
-    const [dafacData, setDafacData] = useState(data);
+    const [dafacData, setDafacData] = useState({
+      surName:'',
+      fName:'',
+      mName:'',
+      gender:'',
+      age:'',
+      dob:'',
+      occupation:'',
+      monthlyIncome:'',
+    
+});
 
+  
     const handleChange = (e) => {
+
       const { name, value } = e.target;
-      setDafacData({
-        ...dafacData,
+
+      setDafacData((prevData) => ({
+        ...prevData,
         [name]: value,
-      });
-
-
+      }));
 
     };
-  
+    
     const handleSubmit = (e) => {
       e.preventDefault();
       // Handle form submission logic for Step 1
-      onNext(dafacData);
+      onNext();
 
     };
   
